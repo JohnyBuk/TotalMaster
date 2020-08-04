@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://images/player/down/d4.png" type="Texture" id=1]
 [ext_resource path="res://images/player/down/d2.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://images/player/up/up1.png" type="Texture" id=14]
 [ext_resource path="res://images/player/up/up2.png" type="Texture" id=15]
 [ext_resource path="res://images/player/up/up3.png" type="Texture" id=16]
+[ext_resource path="res://images/player/idle.png" type="Texture" id=17]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -27,6 +28,11 @@ animations = [ {
 "frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 16 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ) ],
@@ -47,8 +53,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "up"
-frame = 3
+animation = "idle"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
