@@ -1,43 +1,53 @@
 [gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://images/player/down/d4.png" type="Texture" id=1]
-[ext_resource path="res://images/player/down/d2.png" type="Texture" id=2]
-[ext_resource path="res://images/player/down/d3.png" type="Texture" id=3]
-[ext_resource path="res://images/player/down/d1.png" type="Texture" id=4]
+[ext_resource path="res://images/player/walk/down/d4.png" type="Texture" id=1]
+[ext_resource path="res://images/player/walk/down/d2.png" type="Texture" id=2]
+[ext_resource path="res://images/player/walk/down/d3.png" type="Texture" id=3]
+[ext_resource path="res://images/player/walk/down/d1.png" type="Texture" id=4]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=5]
-[ext_resource path="res://images/player/left/left7.png" type="Texture" id=6]
-[ext_resource path="res://images/player/left/left6.png" type="Texture" id=7]
-[ext_resource path="res://images/player/left/left3.png" type="Texture" id=8]
-[ext_resource path="res://images/player/left/left5.png" type="Texture" id=9]
-[ext_resource path="res://images/player/left/left4.png" type="Texture" id=10]
-[ext_resource path="res://images/player/left/left1.png" type="Texture" id=11]
-[ext_resource path="res://images/player/left/left2.png" type="Texture" id=12]
-[ext_resource path="res://images/player/up/up4.png" type="Texture" id=13]
-[ext_resource path="res://images/player/up/up1.png" type="Texture" id=14]
-[ext_resource path="res://images/player/up/up2.png" type="Texture" id=15]
-[ext_resource path="res://images/player/up/up3.png" type="Texture" id=16]
-[ext_resource path="res://images/player/idle.png" type="Texture" id=17]
+[ext_resource path="res://images/player/walk/left/left7.png" type="Texture" id=6]
+[ext_resource path="res://images/player/walk/left/left6.png" type="Texture" id=7]
+[ext_resource path="res://images/player/walk/left/left4.png" type="Texture" id=10]
+[ext_resource path="res://images/player/walk/left/left1.png" type="Texture" id=11]
+[ext_resource path="res://images/player/walk/left/left2.png" type="Texture" id=12]
+[ext_resource path="res://images/player/walk/up/up4.png" type="Texture" id=13]
+[ext_resource path="res://images/player/walk/up/up1.png" type="Texture" id=14]
+[ext_resource path="res://images/player/walk/up/up2.png" type="Texture" id=15]
+[ext_resource path="res://images/player/walk/up/up3.png" type="Texture" id=16]
+[ext_resource path="res://images/player/idle/idle_down.png" type="Texture" id=17]
+[ext_resource path="res://images/player/idle/idle_up.png" type="Texture" id=18]
+[ext_resource path="res://images/player/idle/idle_left.png" type="Texture" id=19]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 6 ) ],
 "loop": true,
-"name": "left",
+"name": "left_walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 16 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 18 ) ],
 "loop": true,
-"name": "up",
+"name": "up_idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 17 ) ],
+"frames": [ ExtResource( 19 ) ],
 "loop": true,
-"name": "idle",
+"name": "left_idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ) ],
 "loop": true,
-"name": "down",
+"name": "down_walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "down_idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 16 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "up_walk",
 "speed": 5.0
 } ]
 
@@ -50,10 +60,11 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
+speed = 300
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "idle"
+animation = "left_idle"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
