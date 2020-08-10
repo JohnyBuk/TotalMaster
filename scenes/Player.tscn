@@ -22,32 +22,32 @@
 animations = [ {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 6 ) ],
 "loop": true,
-"name": "left_walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ) ],
-"loop": true,
-"name": "up_idle",
+"name": "walk_left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 19 ) ],
 "loop": true,
-"name": "left_idle",
+"name": "idle_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 18 ) ],
 "loop": true,
-"name": "down_walk",
+"name": "idle_up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 17 ) ],
 "loop": true,
-"name": "down_idle",
+"name": "idle_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "walk_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 16 ), ExtResource( 15 ) ],
 "loop": true,
-"name": "up_walk",
+"name": "walk_up",
 "speed": 5.0
 } ]
 
@@ -64,7 +64,7 @@ speed = 300
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "left_idle"
+animation = "idle_left"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

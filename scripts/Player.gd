@@ -26,19 +26,18 @@ func choose_animation(velocity: Vector2):
 
 func animates_player(velocity: Vector2):
 	var animation_name
-	var result
 	
 	if velocity.length_squared() > 0:
 		last_velocity = velocity
-		result = choose_animation(last_velocity)
-		animation_name = result[0] + "_walk"
+		animation_name = "walk_"
 		
 	else:
-		result = choose_animation(last_velocity)
-		animation_name = result[0] + "_idle"
+		animation_name = "idle_"
+		
+	var animation = choose_animation(last_velocity)
 
-	$AnimatedSprite.play(animation_name)
-	$AnimatedSprite.flip_h = result[1]
+	$AnimatedSprite.play(animation_name + animation[0])
+	$AnimatedSprite.flip_h = animation[1]
 
 
 func get_input():
