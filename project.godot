@@ -16,8 +16,8 @@ _global_script_class_icons={
 [application]
 
 config/name="TotalMaster"
-run/main_scene="res://scenes/Player.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://scenes/TestLevel.tscn"
+config/icon="res://images/icon.png"
 
 [rendering]
 
