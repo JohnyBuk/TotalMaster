@@ -52,10 +52,10 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 20.5
-height = 138.0
+radius = 27.9798
+height = 131.301
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="KinematicBody2D"]
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
@@ -64,7 +64,8 @@ speed = 300
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "idle_left"
+animation = "walk_down"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

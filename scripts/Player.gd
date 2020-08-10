@@ -1,7 +1,6 @@
-extends Area2D
+extends KinematicBody2D
 
 export var speed = 400 
-var screen_size  
 var last_velocity = Vector2(0, 1)
 
 
@@ -11,7 +10,7 @@ func _ready():
 
 func choose_animation(velocity: Vector2):
 	velocity = velocity.normalized()
-	var a = sqrt(2)/2
+	var a = sin(PI/4)
 
 	if velocity.y >= a:
 		return ["down", false]
@@ -54,15 +53,8 @@ func get_input():
 	
 	return velocity.normalized() * speed
 
-
-func _process(delta):
+	
+func _physics_process(delta):
 	var velocity = get_input()
-
-	position += velocity * delta
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
-
 	animates_player(velocity)
-
-
-
+	move_and_collide(velocity * delta)
