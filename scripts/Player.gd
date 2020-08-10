@@ -2,7 +2,7 @@ extends Area2D
 
 export var speed = 400 
 var screen_size  
-var last_direction = Vector2(0, 1)
+var last_velocity = Vector2(0, 1)
 
 
 func _ready():
@@ -29,36 +29,41 @@ func animates_player(velocity: Vector2):
 	var result
 	
 	if velocity.length_squared() > 0:
-		last_direction = velocity
-		result = choose_animation(last_direction)
+		last_velocity = velocity
+		result = choose_animation(last_velocity)
 		animation_name = result[0] + "_walk"
 		
 	else:
-		result = choose_animation(last_direction)
+		result = choose_animation(last_velocity)
 		animation_name = result[0] + "_idle"
 
 	$AnimatedSprite.play(animation_name)
 	$AnimatedSprite.flip_h = result[1]
 
 
-func _process(delta):
-	var velocity = Vector2() 
-	if Input.is_action_pressed("ui_right"):
+func get_input():
+	var velocity = Vector2()
+
+	if Input.is_action_pressed('ui_right'):
 		velocity.x += 1
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed('ui_left'):
 		velocity.x -= 1
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed('ui_down'):
 		velocity.y += 1
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed('ui_up'):
 		velocity.y -= 1
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-		$AnimatedSprite.play()
-	else:
-		$AnimatedSprite.stop()
 	
+	return velocity.normalized() * speed
+
+
+func _process(delta):
+	var velocity = get_input()
+
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 
 	animates_player(velocity)
+
+
+
