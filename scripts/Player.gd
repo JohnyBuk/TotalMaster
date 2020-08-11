@@ -5,7 +5,7 @@ var last_velocity = Vector2(0, 1)
 
 
 func _ready():
-	screen_size = get_viewport_rect().size
+	pass
 
 
 func choose_animation(velocity: Vector2):
