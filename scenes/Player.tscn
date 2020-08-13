@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://images/player/walk/down/d4.png" type="Texture" id=1]
 [ext_resource path="res://images/player/walk/down/d2.png" type="Texture" id=2]
@@ -25,9 +25,19 @@ animations = [ {
 "name": "walk_left",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 19 ) ],
 "loop": true,
 "name": "idle_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 16 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "walk_up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 18 ) ],
@@ -39,34 +49,36 @@ animations = [ {
 "loop": true,
 "name": "idle_down",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "walk_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 16 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 27.9798
-height = 131.301
+radius = 14.0441
+height = 12.7624
 
-[node name="Player" type="KinematicBody2D"]
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 21.694
+height = 96.3463
+
+[node name="Player" type="Node2D"]
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
 speed = 300
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "walk_down"
-frame = 1
+frame = 4
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Head" type="KinematicBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+position = Vector2( -1.162, -77.7194 )
 shape = SubResource( 2 )
+
+[node name="Body" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2( -0.624222, 14.5233 )
+shape = SubResource( 3 )
