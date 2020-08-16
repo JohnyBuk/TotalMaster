@@ -1,4 +1,4 @@
-extends Node2D
+extends KinematicBody2D
 
 export var speed = 400 
 var last_velocity = Vector2(0, 1)
@@ -53,14 +53,8 @@ func get_input():
 	
 	return velocity.normalized()
 
-
-func move(velocity: Vector2):
-	var collision = $Head.move_and_collide(velocity)
-	$AnimatedSprite.position = $Head.position 
-	$Body.position = $Head.position 
-
 	
 func _physics_process(delta):
 	var velocity = get_input()
 	animates_player(velocity)
-	move(velocity * delta * speed)
+	move_and_collide(velocity * delta * speed)
